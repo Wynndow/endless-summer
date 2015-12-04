@@ -2,28 +2,17 @@ class String
 
   def to_wavecase
     output = ''
-    @which = :lower
-
-    self.chars.each do |char, i|
-
+    @upper = false
+    self.chars.each do |char|
       if char == ' '
         output << char
       elsif char.class == Fixnum
         output << char
       else
-
-          if @which == :lower
-            output << char.downcase
-            @which = :upper
-          elsif @which == :upper
-            output << char.upcase
-            @which = :lower
-          end
-
+        output << (@upper ? char.upcase : char.downcase)
+        @upper = !@upper
       end
-
     end
-output
+  output
   end
-
 end
